@@ -1,330 +1,372 @@
 # sem-13****
 
--- Crear procedimiento que liste/ muestre los porductos (ID-Nombre-PrecioUNi- Stock)
-
-/*mostrar producto*/
-
-select * From  Products 
-
-select ProductID, ProductName, UnitPrice,UnitsInStock from Products
-
-create procedure SP_ListayMuestra
-
-create procedure SP_ListarPro
-AS
-BEGIN
-select ProductID, ProductName, CategoryID, UnitPrice,UnitsInStock 
-from Products
-END
-
-execute SP_ListarPro
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
---Crear un procedimiento Almacenado (SP) donde se busque al empleado por codigo
 
+public class Ventana1 extends javax.swing.JFrame {
 
-alter procedure SP_BusquedaXCod(@country nvarchar(15))
-AS
-BEGIN
-select * 
-from Employees 
-where Country like @country
-END
+    DefaultListModel<String>modeloLista;
+    DefaultComboBoxModel<String>modeloCombo;
 
+    public Ventana1() {
+        
+        initComponents();
+        
+        modeloLista=new DefaultListModel();
+        lstPrincipal.setModel(modeloLista);
+        
+        modeloCombo=new DefaultComboBoxModel();
+        cboPrincipal.setModel(modeloCombo);
+        
+        // modeloCombo=modeloLista;
+    }
+    
+    private void actualizarListaCombo(){
+        //limpiarElementos
+        modeloCombo.removeAllElements();
+        
+        //agregar todos los elementos del modeloLista al modeloCombo
+        for (int i = 0; i <modeloLista.getSize(); i++) {
+            modeloCombo.addElement(modeloLista.getElementAt(i));
+        }
+    
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPrincipal = new javax.swing.JList<>();
+        btnListaAgregar = new javax.swing.JButton();
+        btnListaModificar = new javax.swing.JButton();
+        btnPropiedades = new javax.swing.JButton();
+        btnListaEliminar = new javax.swing.JButton();
+        textBuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnListaBuscar = new javax.swing.JButton();
+        cboPrincipal = new javax.swing.JComboBox<>();
+        btnListaMostrar = new javax.swing.JButton();
+        rbVerListaCasilla = new javax.swing.JRadioButton();
+        rbVerListaDialogo = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtVerLista = new javax.swing.JTextArea();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lstPrincipal.setBackground(new java.awt.Color(204, 255, 204));
+        lstPrincipal.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstPrincipal);
+
+        btnListaAgregar.setText("Agregar");
+        btnListaAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaAgregarActionPerformed(evt);
+            }
+        });
+
+        btnListaModificar.setText("Modificar");
+        btnListaModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaModificarActionPerformed(evt);
+            }
+        });
+
+        btnPropiedades.setText("Propiedades");
+        btnPropiedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPropiedadesActionPerformed(evt);
+            }
+        });
+
+        btnListaEliminar.setText("Eliminar");
+        btnListaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaEliminarActionPerformed(evt);
+            }
+        });
+
+        textBuscar.setText("jTextField1");
+
+        jLabel1.setText("Elemento");
+
+        btnListaBuscar.setBackground(new java.awt.Color(204, 204, 204));
+        btnListaBuscar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        btnListaBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnListaBuscar.setText("Buscar");
+        btnListaBuscar.setAlignmentY(0.0F);
+        btnListaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaBuscarActionPerformed(evt);
+            }
+        });
+
+        cboPrincipal.setBackground(new java.awt.Color(255, 51, 51));
+        cboPrincipal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPrincipalActionPerformed(evt);
+            }
+        });
+
+        btnListaMostrar.setText("Mostrar lista");
+        btnListaMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaMostrarActionPerformed(evt);
+            }
+        });
+
+        rbVerListaCasilla.setText("Ver lista en casilla interior");
+
+        rbVerListaDialogo.setText("Ver lista en cuadro de dialogo");
+
+        txtVerLista.setColumns(20);
+        txtVerLista.setRows(5);
+        jScrollPane2.setViewportView(txtVerLista);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnListaMostrar)
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbVerListaDialogo)
+                                    .addComponent(rbVerListaCasilla)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnListaBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboPrincipal, javax.swing.GroupLayout.Alignment.LEADING, 0, 117, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textBuscar, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(85, 85, 85)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnListaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPropiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(205, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnListaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnListaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnListaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPropiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnListaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbVerListaCasilla)
+                        .addGap(9, 9, 9)
+                        .addComponent(rbVerListaDialogo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnListaMostrar)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnListaAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        //Agregar un nuevo elemento al control lista
+        String nuevoElemento=JOptionPane.showInputDialog("Ingrese nuevo Elemento");
+        
+        //Agregar elemnto a modelo Lista
+        modeloLista.addElement(nuevoElemento);
+        
+        //Seleccionamos en el control lista el nuevo elemto a agregar
+        lstPrincipal.setSelectedIndex(modeloLista.getSize()-1);
+        
+        actualizarListaCombo();
+    }                                               
+
+    private void btnListaModificarActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        //modificar el valor del item seleccionado del control lista
+        String seleccionado, modificado;
+        int indiceSeleccionado;
+        
+        //capturar el inidice del elemnto seleccionado
+        indiceSeleccionado= lstPrincipal.getSelectedIndex();
+        
+        //capturar el valor del elemnto seleccionado
+        seleccionado = lstPrincipal.getSelectedValue();
+        
+        //mostrar el cuador de diaologo para el ingreso del nuevo valor
+        modificado=JOptionPane.showInputDialog("Modificar "+seleccionado+" por: ");
+        
+
+                modeloLista.setElementAt(modificado,indiceSeleccionado);
+                
+                actualizarListaCombo();
+    }                                                 
+
+    private void btnListaEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        modeloLista.removeElementAt(lstPrincipal.getSelectedIndex());
+        
+        actualizarListaCombo();
+    }                                                
+
+    private void cboPrincipalActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                                            
+
+    private void btnPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        String primerElemento, ultimoElemento, elementoSeleccionado;
+        int cantElementos;
+        
+        primerElemento = modeloLista.getElementAt(0);
+        ultimoElemento = modeloLista.getElementAt(modeloLista.getSize()-1);
+        elementoSeleccionado = lstPrincipal.getSelectedValue();
+        cantElementos= modeloLista.getSize();
+                
+                String salida = String.format("""
+                                              >>Propiedades de lista:
+                                              Primer elemento: %s
+                                              Ultimo elemento: %s
+                                              Elemento seleccionado: %s
+                                              Cantidad de elemento: %s
+                                              """);
+                
+                JOptionPane.showMessageDialog(rootPane, salida);
+                
+                actualizarListaCombo();
+    }                                              
+
+    private void btnListaMostrarActionPerformed(java.awt.event.ActionEvent evt) {                                                
  
+        
+        if( rbVerListaCasilla.isSelected()==true){
+                txtVerLista.setText(modeloLista.toString());
+                }
+        if( rbVerListaDialogo.isSelected()==true){
+            txtVerLista.setText("");
+                JOptionPane.showMessageDialog(rootPane, modeloLista.toString());
+                }
+    }                                               
+
+    private void btnListaBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        String buscado = txtBuscar.getText();
+        
+        boolean existe = modeloLista.contains(buscado);
+        
+        int indiceEncontrado= modeloLista.indexOf(buscado);
+        
+        if (existe) {
+            JOptionPane.showMessageDialog(rootPane, "El elemento "+buscado+ "SI EXISTE"+"en el indice: "+ indiceEncontrado);
+            lstPrincipal.setSelectedIndex(indiceEncontrado);
+        } 
+            else{
+            JOptionPane.showMessageDialog(rootPane, "El elemento "+buscado+ "NO EXISTE"+"en la lista, que pena =(: ");
+        }
+    }                                              
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Ventana1().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnListaAgregar;
+    private javax.swing.JButton btnListaBuscar;
+    private javax.swing.JButton btnListaEliminar;
+    private javax.swing.JButton btnListaModificar;
+    private javax.swing.JButton btnListaMostrar;
+    private javax.swing.JButton btnPropiedades;
+    private javax.swing.JComboBox<String> cboPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> lstPrincipal;
+    private javax.swing.JRadioButton rbVerListaCasilla;
+    private javax.swing.JRadioButton rbVerListaDialogo;
+    private javax.swing.JTextField textBuscar;
+    private javax.swing.JTextArea txtVerLista;
+    // End of variables declaration                   
+}
 
-create procedure SP_BusquedaXApellido(@LastName nvarchar(15))
-AS
-BEGIN
-select * 
-from Employees 
-where LastName like @LastName
-END
-
-exec SP_BusquedaXApellido 'D%'
-
-
---Crear un procedimiento Almacenado (SP) donde se busque a lo(s) cliente(s) por ciudad
-
-select * from Customers where city like 'london'
-
-alter procedure SP_BusquedaXcuidad(@city nvarchar(15),
-@CODPOSTAL nvarchar(10))
-AS
-BEGIN
-select * 
-from Customers 
-where city like @city and PostalCode=@CODPOSTAL
-END
-
-EXEC SP_BusquedaXcuidad 'london','EC2 5NT'
-
-
-
-
-
-/*SP_
-
-Generar un Procedimiento almacenado (SP_...) utilizando el "Northwind"
---1-Q consulte una tabla cualquiera mostrando todos los campos (*)
------------------------------------------------------------------*/
-
-Create procedure SP_MostrarEmp
-AS
-BEGIN
-select *from Employees 
-END
-
-exec SP_MostrarEmp
-
-/*2-Q consulte una tabla cualquiera mostrando CAmpos agrupados (Group by ...)
----------------------------------------------------------------------------*/
-
-create procedure SP_mostrarxgrupo
-AS
-BEGIN
-select city,count(*) from Employees 
-group by city
-END
-
-exec SP_mostrarxgrupo
-/*3- Que consulte enviando 1 parametro (WHERE) (Lo necesario) 
------------------------------------------------------------*/
-
-
-alter procedure SP_mostrar(
---parametro consulte tipo de dato)
-AS
-BEGIN
-select * from Employees 
-Where .... --con parametro
-END
-
-exec SP_mostrar
-
-
-
--------------------------------------------------------------
--------------------------------------------------------------
-/*PLUS PARA REVISAR*/
-
-/**********************/
---Crear un procedimiento almacenado que muestre todos los campos de los EMPLEADOS
-/**********************/
---conocer al shipper
-
-create procedure SP_ShippersInsertaNuevo
-(@Companyname nvarchar(40),@Phone nvarchar(24))
-As
-BEGIN
-insert into Shippers (CompanyName, Phone)
-values (@CompanyName,@Phone)
-select * from Shippers
-END
-
-exec SP_ShippersInsertaNuevo 'UTP','88888'
-exec SP_ShippersInsertaNuevo 'UTP','88889'
-
-insert into Shippers (CompanyName, Phone)
-values ('Tolva Couriers','954542452')
-
-
-
-select * from Shippers
-
-
-/********************************************/
-
-create procedure SP_ShippersInsertaNuevo
-(
-@NombreEmpresa nvarchar(40),
-@Fono nvarchar(24)
-)
-As
-BEGIN
-insert into Shippers (CompanyName, Phone)
-values (@NombreEmpresa,@Fono)
-END
-go
-
-exec SP_ShippersInsertaNuevo 'TolvA cO', '9545424512'
-execute SP_ShippersInsertaNuevo 'TolvA cO', '9545424512'
-
-/**********************/
---DIAPO 6
---Crear un procedimiento almacenado que muestre todos los campos de los EMPLEADOS por Ciudad ()
-/**********************/
-create procedure SP_ShippersEliminarID(@ShipperID int)
-As
-BEGIN
-delete from Shippers
-where ShipperID= @ShipperID
-select * from Shippers
-END
-
-create procedure SP_ShippersEliminarID(@ShipperID int)
-As
-BEGIN
-delete from Shippers
-where ShipperID= @ShipperID
-select * from Shippers
-END
-
-execute SP_ShippersEliminarID 6
-execute SP_ShippersEliminarID 7
-execute SP_ShippersEliminarID 8
-
-select * from Employees
-
-select * from Shippers
-
-delete from Shippers where ShipperID between 5 and 6
-
-----------------------------------------------------------------
---Crear un SP para actualizar precio aplicando codigo de un producto especifico:
-                              ------           -------   
-
-select * from Products
-
-execute SP_AjustePrecio 20.5, 1;
-
-create procedure SP_AjustePrecio (
-@NuevoPrecio money,
-@CodProd int) 
-AS
-BEGIN
-
-UPDATE Products
-SET UnitPrice=@NuevoPrecio 
-WHERE ProductID=@CodProd
-
-END
-
-
-
-
-
-/************ FUNCIONES (DEFICINAS POR EL USUARIO) **********/
-
---SINTAXIS:
-
-CREATE FUNCTION <NombreDeLaFuncion> (<@parametro 1> AS TipoDato, <@parametro2> AS TipoDato)
-RETURNS TipoDato
-AS
-BEGIN
-	DECLARE <@parametro Salida> AS TipoDato--Esta linea es para declarar el 
-	SET <@parametro Salida> = <@parametrosEntrada>
-	    <operacion / sentencia / consulta> 
-	RETURN <@parametro Salida>
-END
-
-
-/*Crear una funcion que saque el AREA de un TRIANGULO*/
-/*****************************************************/
-
-------------------------Sin parametro de salida-----------------------------
-
-create function S_AREA_TRI (@base as decimal(10,2), @altura as decimal(10,2))
-RETURNS decimal(10,2)
-AS
-Begin 
-	RETURN (@base*@altura)/2
-END
-
---Mostrar la funci n:
-select dbo.S_AREA_TRI(4,8) 
-
-------------------------Con parametro de salida--------------------------------
-
-create function C_AREA_TRI (@base as decimal, @altura as decimal)
-returns decimal
-AS
-Begin 
-declare @R as decimal -----Declarar la variable de salida
-Set @R= (@base*@altura)/2   ----- SET colocar valores a esa variable de salida
-RETURN @R
-END
-
-create function C_AREA_CIRC (@base as decimal, @altura as decimal)
-returns decimal
-AS
-Begin 
-declare @R as decimal -----Declarar la variable de salida
-Set @R= (@base*@altura)/2   ----- SET colocar valores a esa variable de salida
-RETURN @R
-END
-
---Mostrar la funci n:
-select dbo.C_AREA_TRI(4,8)
-
----------------------------------------------------------------------
---Imprimir en consola + Transfomacion de tipodedatos
-PRINT 'El area del Triangulo es:' + CAST(dbo.C_AREA_TRI(4,8) AS NVARCHAR)  
-
-
-
-
-
-
--------------------------------------------------------------------
----------------------------DIAPOSITIVA 05--------------------------
---Se requiere obtener el total de los PRODUCTOS VENDIDOS al ingresar el ID
-
-select * from OrderDetails
-
-select OrderID, sum(UnitPrice*Quantity) from OrderDetails
---WHERE OrderID=10251
-group by OrderID
-
-
-alter function TotalXID(@ID as int)
-returns money
-AS
-Begin 
-	declare @TOTAL as money
-
-	SELECT @TOTAL=sum(UnitPrice*Quantity) from OrderDetails
-	WHERE OrderID=@ID
-
-	RETURN @TOTAL
-END
-
-
-select dbo.TotalXID(10252)
-
-
--------------------------------------------------------------------
----------------------------DIAPOSITIVA 07--------------------------
---Se requiere mostrar a todos los CLIENTES al ingresar su PAIS
-
-select * from Customers
-
-
-select CustomerID,CompanyName,Country from Customers
-where Country like 'France'
-
-
-create function ClienteXPais(@Pais as nvarchar(15))
-returns TABLE -------cambio el tipo de retorno
-AS
-	RETURN (
-		select CustomerID,CompanyName,Country from Customers
-		where Country like @Pais
-		)
-
-
-select * from dbo.ClienteXPais('UK')
-
-
-
-
-
-
-/****************** TAREA S13 ***************************/
-
---1. Elegir una tabla al azar de la web, construirla con sus respectivos campos y restricciones, crear un SP_ para registrar, 
---   otro para actualizar y otro para eliminar, cada SENTENCIA con su(s) respectivo(s) parametro(s) (Todos estos pasos deben ser explicados)
---2. Crear una funcion con un parametro de entrada, que retorne una tabla al consultar (Apoyarse en la pregunta 1).
---3. Crear una funcion que calcule el PROMEDIO de 2 n meros (2 parametros de entrada)
---4. Crear una funcion que calcule la SUMA de 3 numeros (3 parametros de entrada)
---5. Crear una funcion que calcule el AREA de un CUADRADO. 
